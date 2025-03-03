@@ -85,5 +85,12 @@ def download_qr():
     
     return send_file(img_io, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
 
+@app.route('/')
+def home():
+    return "QR Code Generator API is running!"
+
+
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Usa el puerto asignado por Render
+    app.run(host='0.0.0.0', port=port, debug=True)
